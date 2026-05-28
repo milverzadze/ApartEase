@@ -1,7 +1,6 @@
 package apartease.view;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -19,47 +18,40 @@ public class DashboardView extends BorderPane {
         initSidebar();
         initContentArea();
 
-        // ---- REKAYASA INTERAKSI MENU (UX) ----
-        
-        // 1. Jika menu Kelola Kamar diklik
+        // LOGIKA INTERAKSI MENU ADMIN
         menuKamarBtn.setOnAction(e -> {
-            contentArea.getChildren().clear(); // Bersihkan konten lama
-            
-            Label title = new Label("Form Kelola Kamar Apartemen");
-            title.setFont(new Font("Segoe UI", 20));
-            title.setStyle("-fx-text-fill: #eff48bff; -fx-font-weight: bold;");
-            
-            Label desc = new Label("Di sini nanti tempat tabel daftar kamar dan form input data unit.");
-            desc.setFont(new Font("Segoe UI", 14));
-            
+            contentArea.getChildren().clear();
+            Label title = new Label("Sistem Manajemen Unit Apartemen");
+            title.setFont(Font.font("Segoe UI", javafx.scene.text.FontWeight.BOLD, 22));
+            title.setStyle("-fx-text-fill: #2C3E50;"); // Jelas & terbaca
+
+            Label desc = new Label("Gunakan halaman ini untuk memantau status hunian dan mengubah harga sewa.");
+            desc.setFont(Font.font("Segoe UI", 14));
+            desc.setStyle("-fx-text-fill: #34495E;");
             contentArea.getChildren().addAll(title, desc);
         });
 
-        // 2. Jika menu Data Penyewa diklik
         menuPenyewaBtn.setOnAction(e -> {
             contentArea.getChildren().clear();
+            Label title = new Label("Database Penghuni & Penyewa Aktif");
+            title.setFont(Font.font("Segoe UI", javafx.scene.text.FontWeight.BOLD, 22));
+            title.setStyle("-fx-text-fill: #2C3E50;");
             
-            Label title = new Label("Database Penghuni / Penyewa");
-            title.setFont(new Font("Segoe UI", 20));
-            title.setStyle("-fx-text-fill: #1E3A8A; -fx-font-weight: bold;");
-            
-            Label desc = new Label("Menampilkan daftar nama penyewa, nomor KTP, dan status pembayaran.");
-            desc.setFont(new Font("Segoe UI", 14));
-            
+            Label desc = new Label("Menampilkan daftar lengkap nama penghuni, nomor identitas, serta berkas kontrak.");
+            desc.setFont(Font.font("Segoe UI", 14));
+            desc.setStyle("-fx-text-fill: #34495E;");
             contentArea.getChildren().addAll(title, desc);
         });
 
-        // 3. Jika menu Komplain diklik
         menuKomplainBtn.setOnAction(e -> {
             contentArea.getChildren().clear();
+            Label title = new Label("Pusat Layanan & Pengaduan Fasilitas");
+            title.setFont(Font.font("Segoe UI", javafx.scene.text.FontWeight.BOLD, 22));
+            title.setStyle("-fx-text-fill: #2C3E50;");
             
-            Label title = new Label("Pusat Pengaduan & Komplain");
-            title.setFont(new Font("Segoe UI", 20));
-            title.setStyle("-fx-text-fill: #1E3A8A; -fx-font-weight: bold;");
-            
-            Label desc = new Label("Daftar keluhan fasilitas dari penghuni apartemen yang belum diproses.");
-            desc.setFont(new Font("Segoe UI", 14));
-            
+            Label desc = new Label("Daftar keluhan masuk dari penghuni apartemen terkait kerusakan fasilitas unit.");
+            desc.setFont(Font.font("Segoe UI", 14));
+            desc.setStyle("-fx-text-fill: #34495E;");
             contentArea.getChildren().addAll(title, desc);
         });
     }
@@ -68,19 +60,19 @@ public class DashboardView extends BorderPane {
         VBox sidebar = new VBox();
         sidebar.setSpacing(15);
         sidebar.setPadding(new Insets(25, 15, 25, 15));
-        sidebar.setStyle("-fx-background-color: #1E3A8A;");
+        sidebar.setStyle("-fx-background-color: #D4E6F1;"); // Biru Pastel Jernih
         sidebar.setPrefWidth(220);
 
-        Label logoLabel = new Label("ApartEase");
-        logoLabel.setFont(new Font("Segoe UI", 24));
-        logoLabel.setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 0 0 20 0;");
+        Label logoLabel = new Label("ApartEase\n(Admin)");
+        logoLabel.setFont(Font.font("Segoe UI", javafx.scene.text.FontWeight.BOLD, 24));
+        logoLabel.setStyle("-fx-text-fill: #2C3E50; -fx-padding: 0 0 20 0;");
 
         menuKamarBtn = createMenuButton("🏠 Kelola Kamar");
         menuPenyewaBtn = createMenuButton("👥 Data Penyewa");
-        menuKomplainBtn = createMenuButton("⚠️ Komplain Penghuni");
+        menuKomplainBtn = createMenuButton("⚠️ Kelola Komplain");
         
         logoutBtn = createMenuButton("🚪 Keluar");
-        logoutBtn.setStyle("-fx-background-color: #def687ff; -fx-text-fill: white; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand;");
+        logoutBtn.setStyle("-fx-background-color: #E6B0AA; -fx-text-fill: #2C3E50; -fx-font-weight: bold; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand; -fx-background-radius: 5;");
 
         sidebar.getChildren().addAll(logoLabel, menuKamarBtn, menuPenyewaBtn, menuKomplainBtn, logoutBtn);
         this.setLeft(sidebar);
@@ -90,15 +82,15 @@ public class DashboardView extends BorderPane {
         contentArea = new VBox();
         contentArea.setPadding(new Insets(30));
         contentArea.setSpacing(20);
-        contentArea.setStyle("-fx-background-color: #FFFFFF;");
+        contentArea.setStyle("-fx-background-color: #FEF9E7;"); // Kuning Krem Teduh
 
         Label welcomeLabel = new Label("Selamat Datang, Admin!");
-        welcomeLabel.setFont(new Font("Segoe UI", 24));
-        welcomeLabel.setStyle("-fx-text-fill: #1F2937; -fx-font-weight: bold;");
+        welcomeLabel.setFont(Font.font("Segoe UI", javafx.scene.text.FontWeight.BOLD, 26));
+        welcomeLabel.setStyle("-fx-text-fill: #2C3E50;"); 
 
         Label descLabel = new Label("Silakan pilih menu di sebelah kiri untuk mengelola data apartemen.");
-        descLabel.setFont(new Font("Segoe UI", 14));
-        descLabel.setStyle("-fx-text-fill: #4B5563;");
+        descLabel.setFont(Font.font("Segoe UI", 14));
+        descLabel.setStyle("-fx-text-fill: #566573;");
 
         contentArea.getChildren().addAll(welcomeLabel, descLabel);
         this.setCenter(contentArea);
@@ -108,11 +100,11 @@ public class DashboardView extends BorderPane {
         Button btn = new Button(text);
         btn.setMaxWidth(Double.MAX_VALUE);
         btn.setPadding(new Insets(10, 15, 10, 15));
-        btn.setFont(new Font("Segoe UI", 14));
-        btn.setStyle("-fx-background-color: transparent; -fx-text-fill: #E5E7EB; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand;");
+        btn.setFont(Font.font("Segoe UI", 14));
+        btn.setStyle("-fx-background-color: transparent; -fx-text-fill: #2C3E50; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand; -fx-font-weight: bold;");
         
-        btn.setOnMouseEntered(e -> btn.setStyle("-fx-background-color: #1D4ED8; -fx-text-fill: white; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand;"));
-        btn.setOnMouseExited(e -> btn.setStyle("-fx-background-color: transparent; -fx-text-fill: #E5E7EB; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand;"));
+        btn.setOnMouseEntered(e -> btn.setStyle("-fx-background-color: rgba(255, 255, 255, 0.6); -fx-text-fill: #2C3E50; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand; -fx-background-radius: 5; -fx-font-weight: bold;"));
+        btn.setOnMouseExited(e -> btn.setStyle("-fx-background-color: transparent; -fx-text-fill: #2C3E50; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand; -fx-font-weight: bold;"));
         
         return btn;
     }

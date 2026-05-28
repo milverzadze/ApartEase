@@ -22,7 +22,7 @@ public class WelcomeView extends VBox {
         // Header Menu Utama
         Label titleLabel = new Label("Selamat Datang di ApartEase");
         titleLabel.setFont(new Font("Chiller Regular", 32));
-        titleLabel.setStyle("-fx-text-fill: #e3ec88ff; -fx-font-weight: bold;");
+        titleLabel.setStyle("-fx-text-fill: #f9328fff; -fx-font-weight: bold;");
 
         Label subtitleLabel = new Label("Silakan pilih jenis pengguna untuk masuk ke sistem:");
         subtitleLabel.setFont(new Font("Chiller Regular", 16));
