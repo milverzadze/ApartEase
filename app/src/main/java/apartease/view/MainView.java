@@ -10,48 +10,69 @@ public class MainView extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
+        primaryStage.setTitle("ApartEase - Sistem Aplikasi Apartemen");
         
-        // Atur judul jendela aplikasi utama (UI)
-        primaryStage.setTitle("ApartEase");
+        // JALUR DIAGRAM: Mulai Aplikasi langsung memunculkan Menu Utama Role
+        showWelcomeScreen();
 
-        // Tampilan pertama yang dibuka saat aplikasi dijalankan adalah Halaman Login
-        showLoginScreen();
-
-        primaryStage.setWidth(1024);
-        primaryStage.setHeight(600);
+        primaryStage.setWidth(1100);
+        primaryStage.setHeight(650);
         primaryStage.show();
     }
 
-    // Fungsi untuk memunculkan halaman login
-    public void showLoginScreen() {
+    // 1. MENU UTAMA (PILIH ROLE)
+    public void showWelcomeScreen() {
+        WelcomeView welcomeView = new WelcomeView();
+
+        // Alur Jika Pilih Admin -> Lari ke Halaman Login Admin
+        welcomeView.adminRoleBtn.setOnAction(e -> showAdminLoginScreen());
+
+        // Alur Jika Pilih Penyewa -> Sementara langsung ke Dashboard Penyewa (Bisa ditambah login nanti)
+        welcomeView.penyewaRoleBtn.setOnAction(e -> showPenyewaDashboardScreen());
+
+        // Alur Jika Klik Keluar Aplikasi -> Tutup Jendela (Selesai)
+        welcomeView.keluarBtn.setOnAction(e -> primaryStage.close());
+
+        primaryStage.setScene(new Scene(welcomeView));
+    }
+
+    // 2. HALAMAN LOGIN ADMIN
+    public void showAdminLoginScreen() {
         LoginView loginView = new LoginView();
         
-        // Alur UX: Atur apa yang terjadi jika tombol login diklik
+        // Jika login sukses (admin/123) -> lari ke Menu Admin
         loginView.loginButton.setOnAction(e -> {
-            // SEMENTARA: Langsung pindah ke dashboard tanpa validasi database dulu
-            showDashboardScreen();
+            if (loginView.usernameField.getText().equals("admin") && loginView.passwordField.getText().equals("123")) {
+                showAdminDashboardScreen();
+            } else {
+                loginView.passwordField.clear();
+                System.out.println("Login Admin Gagal!");
+            }
         });
 
-        // Pasang halaman login ke dalam Scene jendela
-        Scene scene = new Scene(loginView);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(loginView));
     }
 
-    // Fungsi untuk memunculkan halaman dashboard utama
-    public void showDashboardScreen() {
-        DashboardView dashboardView = new DashboardView();
+    // 3. MENU DASHBOARD ADMIN (HIJAU TUA)
+    public void showAdminDashboardScreen() {
+        DashboardView adminDashboard = new DashboardView();
+        
+        // Jalur kembali ke menu utama
+        adminDashboard.logoutBtn.setOnAction(e -> showWelcomeScreen());
 
-        // Alur UX: Atur jika tombol Keluar/Logout di sidebar diklik
-        dashboardView.logoutBtn.setOnAction(e -> {
-            showLoginScreen(); // Kembali ke halaman login
-        });
-
-        // Ganti isi Scene jendela menjadi halaman dashboard
-        Scene scene = new Scene(dashboardView);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(adminDashboard));
     }
 
-    // Fungsi main bawaan Java untuk meluncurkan JavaFX
+    // 4. MENU DASHBOARD PENYEWA (COKELAT TUA)
+    public void showPenyewaDashboardScreen() {
+        PenyewaDashboardView penyewaDashboard = new PenyewaDashboardView();
+        
+        // Jalur kembali ke menu utama
+        penyewaDashboard.logoutBtn.setOnAction(e -> showWelcomeScreen());
+
+        primaryStage.setScene(new Scene(penyewaDashboard));
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

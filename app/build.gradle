@@ -33,7 +33,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'finallab.App'
+    mainClass = 'apartease.view.MainView'
 }
 
 javafx {
