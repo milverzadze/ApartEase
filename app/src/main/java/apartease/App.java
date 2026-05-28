@@ -35,7 +35,7 @@ public class App {
                     Admin admin = menuAdmin.loginAdmin();
                     if (admin != null) menuAdmin.menuAdmin(admin);
                 } else if (pil.equals("3")) {
-                    // kembali
+                  
                 } else {
                     System.out.println("Pilihan tidak valid.");
                 }
@@ -52,7 +52,7 @@ public class App {
                     Penyewa penyewa = menuPenyewa.loginPenyewa();
                     if (penyewa != null) menuPenyewa.menuPenyewa(penyewa);
                 } else if (pil.equals("3")) {
-                    // kembali
+                   
                 } else {
                     System.out.println("Pilihan tidak valid.");
                 }

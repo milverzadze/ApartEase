@@ -453,8 +453,6 @@ public class MenuAdmin {
         admin.tampilkanProfil();
     }
 
-    // ============ Helper input ============
-
     private String inputDenganValidasi(String label, int maxCoba) {
         int coba = 0;
         while (coba < maxCoba) {

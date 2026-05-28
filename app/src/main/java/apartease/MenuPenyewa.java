@@ -200,42 +200,43 @@ public class MenuPenyewa {
         String pilDurasi = sc.nextLine().trim();
 
         String durasiTipe;
-        int maxDurasi;
-        switch (pilDurasi) {
-            case "1": durasiTipe = "Harian"; maxDurasi = 7; break;
-            case "2": durasiTipe = "Mingguan"; maxDurasi = Integer.MAX_VALUE; break;
-            case "3": durasiTipe = "Bulanan"; maxDurasi = Integer.MAX_VALUE; break;
-            case "4": durasiTipe = "Tahunan"; maxDurasi = Integer.MAX_VALUE; break;
-            default:
-                System.out.println("Pilihan tidak valid.");
-                return;
-        }
+    int maxDurasi;
+    String pesanBatas;
+    switch (pilDurasi) {
+    case "1": durasiTipe = "Harian";   maxDurasi = 6;  pesanBatas = "Maksimal 6 hari. Lebih dari itu gunakan Mingguan."; break;
+    case "2": durasiTipe = "Mingguan"; maxDurasi = 3; pesanBatas = "Maksimal 3 minggu. Lebih dari itu gunakan Bulanan."; break;
+    case "3": durasiTipe = "Bulanan";  maxDurasi = 11; pesanBatas = "Maksimal 11 bulan. Lebih dari itu gunakan Tahunan."; break;
+    case "4": durasiTipe = "Tahunan";  maxDurasi = 5;  pesanBatas = "Maksimal 5 tahun."; break;
+    default:
+        System.out.println("Pilihan tidak valid.");
+        return;
+}
 
-        int jumlahDurasi = -1;
-        int coba = 0;
-        while (coba < 3) {
-            System.out.print("Berapa " + durasiTipe.toLowerCase() + " ? ");
-            try {
-                int input = Integer.parseInt(sc.nextLine().trim());
-                if (input <= 0) {
-                    System.out.println("Jumlah harus lebih dari 0.");
-                    coba++;
-                } else if (durasiTipe.equals("Harian") && input > 7) {
-                    System.out.println("Durasi harian maksimal 7 hari. Lebih dari itu gunakan mingguan.");
-                    coba++;
-                } else {
-                    jumlahDurasi = input;
-                    break;
-                }
-            } catch (Exception e) {
-                System.out.println("Input harus angka.");
-                coba++;
-            }
+    int jumlahDurasi = -1;
+    int coba = 0;
+    while (coba < 3) {
+    System.out.print("Berapa " + durasiTipe.toLowerCase() + " ? (maks " + (maxDurasi == Integer.MAX_VALUE ? "tidak terbatas" : maxDurasi) + ") : ");
+    try {
+        int input = Integer.parseInt(sc.nextLine().trim());
+        if (input <= 0) {
+            System.out.println("Jumlah harus lebih dari 0.");
+            coba++;
+        } else if (input > maxDurasi) {
+            System.out.println(pesanBatas);
+            coba++;
+        } else {
+            jumlahDurasi = input;
+            break;
         }
-        if (jumlahDurasi == -1) {
-            System.out.println("Terlalu banyak kesalahan, kembali ke menu.");
-            return;
-        }
+    } catch (Exception e) {
+        System.out.println("Input harus angka.");
+        coba++;
+    }
+    }
+    if (jumlahDurasi == -1) {
+    System.out.println("Terlalu banyak kesalahan, kembali ke menu.");
+    return;
+    }
 
         long hargaSatuan = dm.getHargaSewa().getHarga(unit.getTipeUnit(), durasiTipe.toLowerCase());
         long totalHarga = hargaSatuan * jumlahDurasi;
