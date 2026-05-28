@@ -25,7 +25,7 @@ public class LoginView extends VBox {
         // 2. Desain Label Judul Aplikasi (Konsep UI)
         Label titleLabel = new Label("ApartEase Admin");
         titleLabel.setFont(new Font("Segoe UI", 26));
-        titleLabel.setStyle("-fx-text-fill: #9fb9ffff; -fx-font-weight: bold;"); 
+        titleLabel.setStyle("-fx-text-fill: #f956c3ff; -fx-font-weight: bold;"); 
 
         // 3. Elemen Form Input
         usernameField = new TextField();
@@ -41,7 +41,7 @@ public class LoginView extends VBox {
         // 4. Elemen Tombol Aksi
         loginButton = new Button("Sign In");
         loginButton.setMaxWidth(260);
-        loginButton.setStyle("-fx-background-color: #eea9ddff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;");
+        loginButton.setStyle("-fx-background-color: #fc79dbff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;");
 
         // 5. Satukan semua komponen ke dalam susunan Vertikal (VBox)
         this.getChildren().addAll(titleLabel, usernameField, passwordField, loginButton);

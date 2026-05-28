@@ -27,7 +27,7 @@ public class DashboardView extends BorderPane {
             
             Label title = new Label("Form Kelola Kamar Apartemen");
             title.setFont(new Font("Segoe UI", 20));
-            title.setStyle("-fx-text-fill: #1E3A8A; -fx-font-weight: bold;");
+            title.setStyle("-fx-text-fill: #eff48bff; -fx-font-weight: bold;");
             
             Label desc = new Label("Di sini nanti tempat tabel daftar kamar dan form input data unit.");
             desc.setFont(new Font("Segoe UI", 14));
@@ -80,7 +80,7 @@ public class DashboardView extends BorderPane {
         menuKomplainBtn = createMenuButton("⚠️ Komplain Penghuni");
         
         logoutBtn = createMenuButton("🚪 Keluar");
-        logoutBtn.setStyle("-fx-background-color: #DC2626; -fx-text-fill: white; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand;");
+        logoutBtn.setStyle("-fx-background-color: #def687ff; -fx-text-fill: white; -fx-alignment: BASELINE_LEFT; -fx-cursor: hand;");
 
         sidebar.getChildren().addAll(logoLabel, menuKamarBtn, menuPenyewaBtn, menuKomplainBtn, logoutBtn);
         this.setLeft(sidebar);
