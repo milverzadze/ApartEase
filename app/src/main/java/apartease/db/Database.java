@@ -57,7 +57,9 @@ public class Database {
                 durasi_tipe       TEXT,
                 jumlah_durasi     INTEGER,
                 total_harga       INTEGER,
-                status_pembayaran TEXT
+                status_pembayaran TEXT,
+                tanggal_masuk     TEXT,
+                tanggal_keluar    TEXT
             );
             """;
 
